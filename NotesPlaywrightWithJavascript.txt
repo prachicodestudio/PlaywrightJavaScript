@@ -1,0 +1,416 @@
+Steps to Install Playwright Using Terminal (Most Popular Method)
+
+1. Install Node.js
+
+Go to nodejs.org
+
+Download LTS version
+
+Install it (Next → Next → Finish)
+
+2. Check Node and npm versions
+Open CMD or PowerShell and type:
+
+node -v
+npm -v
+
+
+3. Create a project folder
+
+4. Install VS Code
+
+Go to: https://code.visualstudio.com
+
+Download Windows Installer
+
+Install → Next → Next → Finish
+
+Launch Visual Studio Code
+
+5.  Open Project Folder in VS Code
+
+Create a folder (example: playwright-demo)
+
+Open VS Code
+
+Go to File → Open Folder
+
+Select your folder → Click Select Folder
+
+Now your project is open in VS Code
+
+
+6. Open terminal in vs code editor and install playwright
+
+Install Playwright (recommended command)
+
+npm init playwright@latest
+
+7. Run test
+ in terminal - npx playwright test (by default tests are executed in headless mode)
+
+npx playwright test --headed (to run test in headed mode)
+
+
+
+
+--------------------Install Playwright Using VS Code Extension (Beginner Method)-------------------------------------	
+
+
+A) Install Playwright Using VS Code Extension (Beginner Method)
+Steps:
+
+Open VS Code editor
+
+Go to Extensions panel
+Shortcut: Ctrl + Shift + X
+
+Search: Playwright Test
+
+Install the extension named "Playwright Test for VS Code"
+
+Open your project folder
+
+Now click “Install Playwright” when VS Code shows popup
+OR
+For command pallete Press Ctrl + Shift + P → Type:
+Playwright: Install Playwright
+
+Select:
+
+JavaScript (or TypeScript)
+
+Test folder
+
+Install browsers (Yes)
+
+VS Code will automatically:
+
+Install Playwright
+
+Install browsers
+
+Create tests folder
+
+Create config file
+
+Your Playwright setup is done.		
+
+
+Session-03
+---------------
+1.  npx playwright test  //headless mode
+Runs all Playwright tests across all configured browsers in headless mode.
+
+For headed mode-
+npx playwright test --headed //headed mode
+
+2.  npx playwright test FirstTest.spec.js
+Runs only the specified test file.
+
+3.  npx playwright show-report
+Opens the HTML report of the last test execution.
+
+4.  npx playwright test FirstTest.spec.js --project=chromium
+Runs the specified test file only on the Chromium browser.		
+
+Runs the specified test file only on the Firefox browser.
+    npx playwright test FirstTest.spec.js --project=firefox
+
+
+Runs the specified test file only on the WebKit browser (Safari engine).
+    npx playwright test FirstTest.spec.js --project=webkit
+
+Notes: For headed  nmode
+
+npx playwright test FirstTest.spec.js --project=chromium --headed
+
+5. Run test in debug node (--debug)
+
+npx playwright test FirstTest.spec.js --project=chromium --debug
+								
+The --debug option runs Playwright tests in debug mode.
+
+It opens the browser in headed mode with the Playwright Inspector.
+
+Test execution pauses step by step for better observation.
+
+Useful for identifying locator issues, timing problems, and failures.
+
+Helps visually debug and understand test behavior.
+
+
+Session-04
+============
+
+Locating Web element on the web pagae
+
+1)property (id, name etc)
+2)CSS selector
+3)XPATH
+
+
+Locate Single Web Element
+-----------------------------------
+🔹 Click (Link / Button)
+
+await page.locator('selector').click()
+
+* Preferred way to locate a single element and click (auto-wait enabled).
+
+await page.click('selector')
+* Shortcut method to find and click an element using a selector.
+
+🔹 Input Box (Text Field)
+
+await page.locator('selector').fill('value') //Clears existing text and enters the new value (recommended).
+
+await page.locator('selector').type('value') //Types value character by character without clearing existing text.
+
+await page.fill('selector', 'value')
+
+* Shortcut method to clear and fill an input field.
+
+Locate Multiple Web Elements
+-----------------------------
+const elements=await page.$$('selector')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* Returns an array of all elements matching the selector.
+
+
+## Assertions (Verification)
+
+```js
+await expect(page).toHaveURL(/partial-url/)
+```
+
+* Verifies page URL using partial match (regex).
+
+```js
+await expect(page.locator('selector')).toHaveText('Text')
+```
+
+* Verifies exact visible text of an element.
+
+```js
+await expect(page.locator('selector')).toBeVisible()
+```
+
+* Checks whether the element is visible on the page.
+
+---
+
+## Best Practices
+
+* ✅ Prefer `page.locator()` over direct methods
+* ✅ Use `fill()` instead of `type()` for inputs
+* ✅ Use `$$()` only when multiple elements are expected
+* ✅ Keep selectors simple (CSS > XPath when possible)
+
+---
+
+## Example (Login Flow)
+
+await page.goto('https://example.com')
+await page.fill('#username', 'user1')
+await page.fill('#password', 'pass123')
+await page.click('#login')
+await expect(page).toHaveURL(/dashboard/)
+```
+Sesssion-5
+-----------
+
+Built-in locators
+
+
+Playwright built-in locators are smart ways to find elements like a real user sees them.
+They are auto-waiting, strict, and accessibility-based, so tests are stable and easy to maintain.
+
+
+Main built-in locators:
+
+getByRole → element ka role (button, textbox, link) //saucedemo, login button , https://practice.expandtesting.com/secure
+
+getByText → visible text //verify product on saucedemo website
+
+getByLabel → form field ka label //https://practice.expandtesting.com/secure
+
+getByPlaceholder → input placeholder text   //saucedemo , username & password
+
+getByAltText → images ka alt text //saucedemo
+
+getByTitle → title/tooltip
+
+getByTestId → test-only attribute (last option)
+
+Session - 6
+------------
+Record & Play test script in Playwright - code generator
+
+what is code generator
+
+In Playwright  a Code Generator (Codegen) is a built-in tool that records your browser actions and automatically generates Playwright test code for you.
+It’s mainly used by beginners or for quick test creation.
+
+codegen = Record + generate test script
+
+
+to open code gen in terminal -
+npx playwright codegen https://www.saucedemo.com
+
+it will open two things
+1. browser
+2. playwright inspector
+
+
+Frequently used codegen options
+--------------------------------
+1) Start Codegen Without URL
+npx playwright codegen
+
+2) Auto-save to a file (MOST USED)
+npx playwright codegen https://example.com --output tests/login.spec.js
+
+
+3)Specify browser (default is chromium)
+npx playwright codegen --browser=chromium
+npx playwright codegen --browser=firefox
+npx playwright codegen --browser=webkit
+
+4) specify language
+
+npx playwright codegen https://example.com \
+  --lang=javascript \
+  --output tests/demo.spec.js
+
+5) emulate device browser window
+npx playwright codegen https://example.com --device="iPhone 12"
+
+6) Set browser window size (height & width)
+--viewport-size=WIDTH,HEIGHT
+npx playwright codegen https://example.com --viewport-size=375,667
+
+Record Assertions Automatically
+
+Session-07
+----------
+Topic: Assertions (Playwright)
+
+1. Page-Level Assertions
+
+Used to validate the overall page state like title and URL, ensuring the correct page is loaded before proceeding.
+
+Examples:
+
+toHaveTitle()
+
+toHaveURL()
+
+2. Element State Assertions
+
+Used to verify the UI readiness of elements—whether they are visible, enabled, or editable before interaction.
+
+Examples:
+
+toBeVisible()
+
+toBeEnabled()
+
+toBeEditable()
+
+toBeHidden()
+
+3.  Text & Value Assertions
+
+Used to validate text content or input values, ensuring correct data is displayed or entered.
+
+Examples:
+
+toHaveText()
+
+toContainText()
+
+toHaveValue()
+
+4. Attribute 
+
+Used to verify HTML attributes, IDs, classes
+ 
+Examples:
+
+toHaveAttribute()
+
+toHaveId()
+
+toHaveClass()
+
+
+
+5. Count Assertions
+
+Used to verify the number of matching elements, helpful for lists, tables, and product counts.
+
+Example:
+
+toHaveCount()
+
+6. Screenshot / Visual Assertions
+
+Used to perform visual UI validation by comparing current UI with a baseline image; supports masking for dynamic content.
+
+Examples:
+
+toHaveScreenshot()
+
+mask for dynamic elements (cart count, time, etc.)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
