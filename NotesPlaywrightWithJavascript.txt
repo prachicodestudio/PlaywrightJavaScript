@@ -398,6 +398,83 @@ toHaveScreenshot()
 mask for dynamic elements (cart count, time, etc.)
 
 
+Session-08
+-----------
+
+1. Recap: Hard Assertions
+
+Hard assertions stop test execution immediately when they fail.
+
+await expect(page).toHaveTitle('Swag Labs');
+
+
+If this fails → test stops.
+
+2. Problem with Hard Assertions
+
+Only first failure is reported
+
+Remaining validations are skipped
+
+Not suitable for validating multiple UI elements
+
+3. What Are Soft Assertions?
+
+Soft assertions allow test execution to continue even if an assertion fails.
+
+All failures are reported at the end of the test.
+
+4. Soft Assertions in Playwright
+
+Playwright provides soft assertions using expect.soft().
+
+Syntax:
+await expect.soft(actual).toBe(expected);
+
+5. Demo Website
+
+SauceDemo
+https://www.saucedemo.com/
+
+6. Example Use Case
+
+Validate:
+
+Page title
+
+URL
+
+Login form elements
+
+Product page heading
+
+Even if one validation fails, test should continue.
+
+7. Hard vs Soft Assertion Comparison
+Hard Assertion	Soft Assertion
+Stops test on failure	Continues execution
+Suitable for critical flows	Suitable for UI validation
+Single failure reported	Multiple failures reported
+8. When to Use Soft Assertions
+
+UI checks (labels, headings, icons)
+
+Non-critical validations
+
+Visual consistency checks
+
+9. When NOT to Use Soft Assertions
+
+Login failure
+
+Payment failure
+
+Data creation failure
+
+10. Key Takeaway
+
+Use hard assertions for flow control
+Use soft assertions for UI validation
 
 
 
