@@ -22,8 +22,6 @@ test('RadioButtonDemo', async ({ page }) => {
 
     //verify if radio button is checked
     await expect(year3RadioBtn.isChecked()).toBeTruthy()
-
-
     //verify an unselected radiobutton
 
     //loacate radio button - year3

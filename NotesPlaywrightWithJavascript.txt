@@ -47,14 +47,14 @@ Install Playwright (recommended command)
 npm init playwright@latest
 
 7. Run test
- in terminal - npx playwright test (by default tests are executed in headless mode)
+ in terminal - npx playwright test (by default tests are executed in headless mode)
 
 npx playwright test --headed (to run test in headed mode)
 
 
 
 
---------------------Install Playwright Using VS Code Extension (Beginner Method)-------------------------------------	
+--------------------Install Playwright Using VS Code Extension (Beginner Method)-------------------------------------
 
 
 A) Install Playwright Using VS Code Extension (Beginner Method)
@@ -94,11 +94,11 @@ Create tests folder
 
 Create config file
 
-Your Playwright setup is done.		
+Your Playwright setup is done.
 
 
 Session-03
----------------
+---
 1.  npx playwright test  //headless mode
 Runs all Playwright tests across all configured browsers in headless mode.
 
@@ -112,14 +112,14 @@ Runs only the specified test file.
 Opens the HTML report of the last test execution.
 
 4.  npx playwright test FirstTest.spec.js --project=chromium
-Runs the specified test file only on the Chromium browser.		
+Runs the specified test file only on the Chromium browser.
 
 Runs the specified test file only on the Firefox browser.
-    npx playwright test FirstTest.spec.js --project=firefox
+    npx playwright test FirstTest.spec.js --project=firefox
 
 
 Runs the specified test file only on the WebKit browser (Safari engine).
-    npx playwright test FirstTest.spec.js --project=webkit
+    npx playwright test FirstTest.spec.js --project=webkit
 
 Notes: For headed  nmode
 
@@ -128,7 +128,7 @@ npx playwright test FirstTest.spec.js --project=chromium --headed
 5. Run test in debug node (--debug)
 
 npx playwright test FirstTest.spec.js --project=chromium --debug
-								
+ 
 The --debug option runs Playwright tests in debug mode.
 
 It opens the browser in headed mode with the Playwright Inspector.
@@ -151,7 +151,7 @@ Locating Web element on the web pagae
 
 
 Locate Single Web Element
------------------------------------
+---
 🔹 Click (Link / Button)
 
 await page.locator('selector').click()
@@ -172,7 +172,7 @@ await page.fill('selector', 'value')
 * Shortcut method to clear and fill an input field.
 
 Locate Multiple Web Elements
------------------------------
+---
 const elements=await page.$$('selector')
 
 
@@ -214,19 +214,25 @@ const elements=await page.$$('selector')
 ## Assertions (Verification)
 
 ```js
+
 await expect(page).toHaveURL(/partial-url/)
+
 ```
 
 * Verifies page URL using partial match (regex).
 
 ```js
+
 await expect(page.locator('selector')).toHaveText('Text')
+
 ```
 
 * Verifies exact visible text of an element.
 
 ```js
+
 await expect(page.locator('selector')).toBeVisible()
+
 ```
 
 * Checks whether the element is visible on the page.
@@ -250,244 +256,457 @@ await page.fill('#password', 'pass123')
 await page.click('#login')
 await expect(page).toHaveURL(/dashboard/)
 ```
+
 Sesssion-5
+
 -----------
+
+
 
 Built-in locators
 
 
+
+
+
 Playwright built-in locators are smart ways to find elements like a real user sees them.
+
 They are auto-waiting, strict, and accessibility-based, so tests are stable and easy to maintain.
+
+
+
 
 
 Main built-in locators:
 
+
+
 getByRole → element ka role (button, textbox, link) //saucedemo, login button , https://practice.expandtesting.com/secure
+
+
 
 getByText → visible text //verify product on saucedemo website
 
+
+
 getByLabel → form field ka label //https://practice.expandtesting.com/secure
 
-getByPlaceholder → input placeholder text   //saucedemo , username & password
+
+
+getByPlaceholder → input placeholder text   //saucedemo , username \& password
+
+
 
 getByAltText → images ka alt text //saucedemo
 
+
+
 getByTitle → title/tooltip
+
+
 
 getByTestId → test-only attribute (last option)
 
+
+
 Session - 6
+
 ------------
-Record & Play test script in Playwright - code generator
+
+Record \& Play test script in Playwright - code generator
+
+
 
 what is code generator
 
+
+
 In Playwright  a Code Generator (Codegen) is a built-in tool that records your browser actions and automatically generates Playwright test code for you.
+
 It’s mainly used by beginners or for quick test creation.
+
+
 
 codegen = Record + generate test script
 
 
+
+
+
 to open code gen in terminal -
+
 npx playwright codegen https://www.saucedemo.com
 
+
+
 it will open two things
-1. browser
-2. playwright inspector
+
+1\. browser
+
+2\. playwright inspector
+
+
+
 
 
 Frequently used codegen options
+
 --------------------------------
-1) Start Codegen Without URL
+
+1\) Start Codegen Without URL
+
 npx playwright codegen
 
-2) Auto-save to a file (MOST USED)
+
+
+2\) Auto-save to a file (MOST USED)
+
 npx playwright codegen https://example.com --output tests/login.spec.js
 
 
+
+
+
 3)Specify browser (default is chromium)
+
 npx playwright codegen --browser=chromium
+
 npx playwright codegen --browser=firefox
+
 npx playwright codegen --browser=webkit
 
-4) specify language
 
-npx playwright codegen https://example.com \
-  --lang=javascript \
-  --output tests/demo.spec.js
 
-5) emulate device browser window
+4\) specify language
+
+
+
+npx playwright codegen https://example.com \\
+
+&nbsp; --lang=javascript \\
+
+&nbsp; --output tests/demo.spec.js
+
+
+
+5\) emulate device browser window
+
 npx playwright codegen https://example.com --device="iPhone 12"
 
-6) Set browser window size (height & width)
+
+
+6\) Set browser window size (height \& width)
+
 --viewport-size=WIDTH,HEIGHT
+
 npx playwright codegen https://example.com --viewport-size=375,667
+
+
 
 Record Assertions Automatically
 
+
+
 Session-07
+
 ----------
+
 Topic: Assertions (Playwright)
 
-1. Page-Level Assertions
+
+
+1\. Page-Level Assertions
+
+
 
 Used to validate the overall page state like title and URL, ensuring the correct page is loaded before proceeding.
 
+
+
 Examples:
+
+
 
 toHaveTitle()
 
+
+
 toHaveURL()
 
-2. Element State Assertions
+
+
+2\. Element State Assertions
+
+
 
 Used to verify the UI readiness of elements—whether they are visible, enabled, or editable before interaction.
 
+
+
 Examples:
+
+
 
 toBeVisible()
 
+
+
 toBeEnabled()
+
+
 
 toBeEditable()
 
+
+
 toBeHidden()
 
-3.  Text & Value Assertions
+
+
+3\.  Text \& Value Assertions
+
+
 
 Used to validate text content or input values, ensuring correct data is displayed or entered.
 
+
+
 Examples:
+
+
 
 toHaveText()
 
+
+
 toContainText()
+
+
 
 toHaveValue()
 
-4. Attribute 
+
+
+4\. Attribute 
+
+
 
 Used to verify HTML attributes, IDs, classes
- 
+
+&nbsp;
+
 Examples:
+
+
 
 toHaveAttribute()
 
+
+
 toHaveId()
+
+
 
 toHaveClass()
 
 
 
-5. Count Assertions
+
+
+
+
+5\. Count Assertions
+
+
 
 Used to verify the number of matching elements, helpful for lists, tables, and product counts.
 
+
+
 Example:
+
+
 
 toHaveCount()
 
-6. Screenshot / Visual Assertions
+
+
+6\. Screenshot / Visual Assertions
+
+
 
 Used to perform visual UI validation by comparing current UI with a baseline image; supports masking for dynamic content.
 
+
+
 Examples:
 
+
+
 toHaveScreenshot()
+
+
 
 mask for dynamic elements (cart count, time, etc.)
 
 
-Session-08
------------
 
-1. Recap: Hard Assertions
+
+
+**Session-08**
+
+**-----------**
+
+
+
+**1. Recap: Hard Assertions**
+
+
 
 Hard assertions stop test execution immediately when they fail.
 
-await expect(page).toHaveTitle('Swag Labs');
+
+
+await expect.(page).toHaveTitle('Swag Labs');
+
+
+
 
 
 If this fails → test stops.
 
-2. Problem with Hard Assertions
+
+
+**2. Problem with Hard Assertions**
+
+
 
 Only first failure is reported
 
+
+
 Remaining validations are skipped
+
+
 
 Not suitable for validating multiple UI elements
 
-3. What Are Soft Assertions?
+
+
+**3. What Are Soft Assertions?**
+
+
 
 Soft assertions allow test execution to continue even if an assertion fails.
 
+
+
 All failures are reported at the end of the test.
 
-4. Soft Assertions in Playwright
+
+
+**4. Soft Assertions in Playwright**
+
+
 
 Playwright provides soft assertions using expect.soft().
 
+
+
 Syntax:
+
 await expect.soft(actual).toBe(expected);
 
-5. Demo Website
+
+
+**5. Demo Website**
+
+
 
 SauceDemo
+
 https://www.saucedemo.com/
 
-6. Example Use Case
+
+
+**6. Example Use Case**
+
+
 
 Validate:
 
-Page title
 
-URL
 
-Login form elements
+\-Page title
 
-Product page heading
+
+
+\-URL
+
+
+
+\-Login form elements
+
+
 
 Even if one validation fails, test should continue.
 
-7. Hard vs Soft Assertion Comparison
-Hard Assertion	Soft Assertion
-Stops test on failure	Continues execution
-Suitable for critical flows	Suitable for UI validation
-Single failure reported	Multiple failures reported
-8. When to Use Soft Assertions
+
+
+**7. Hard vs Soft Assertion Comparison**
+
+Hard Assertion				Soft Assertion
+
+---------------				---------------
+
+a) Stops test on failure		Continues execution
+
+b) Suitable for critical flows		Suitable for UI validation
+
+c) Single failure reported		Multiple failures reported
+
+
+
+
+
+**8. When to Use Soft Assertions**
+
+
 
 UI checks (labels, headings, icons)
 
+
+
 Non-critical validations
+
+
 
 Visual consistency checks
 
-9. When NOT to Use Soft Assertions
+
+
+**9. When NOT to Use Soft Assertions**
+
+
 
 Login failure
 
+
+
 Payment failure
+
+
 
 Data creation failure
 
-10. Key Takeaway
+
+
+**10. Key Takeaway**
+
+
 
 Use hard assertions for flow control
+
 Use soft assertions for UI validation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
