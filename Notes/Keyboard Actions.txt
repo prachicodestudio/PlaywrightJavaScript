@@ -1,0 +1,55 @@
+Keyboard Actions
+-------------------
+ 1. Keyboard actions always work on the focused element
+If a textbox or textarea is not focused,
+keyboard input will either go to the page or may not work at all.
+
+2. keyboard.press() performs a complete key action
+It includes:
+
+key press
+
+key release
+
+So it is best for single keys or shortcut keys.
+
+3. keyboard.down() and keyboard.up() are used to hold keys
+Used for scenarios like:
+
+Shift + Arrow selection
+
+Ctrl + multiple key actions
+
+This helps in showing real user-like keyboard behavior.
+
+4. Keyboard shortcuts are different on Windows and Mac
+
+Windows → Control
+
+Mac → Meta (Command key)
+
+In this demo, Windows shortcuts are used.
+
+5. Text selection using arrow keys depends on cursor position
+That’s why:
+
+Cursor is moved to the beginning using Home
+
+Then Shift + ArrowRight is used to select text
+
+6. Keyboard actions trigger real JavaScript keyboard events
+Messages like:
+
+You entered: A
+
+You entered: ENTER
+
+prove that Playwright behaves like a real keyboard.
+
+7. keyboard.type() vs fill()
+
+type() → types character by character (real typing effect)
+
+fill() → directly sets the value
+
+
