@@ -1,0 +1,129 @@
+What are Hooks?
+
+In Playwright, hooks are special functions that run
+before or after tests.
+
+They help you do setup and cleanup work automatically.
+
+Why Hooks are used?
+-------------------
+
+Hooks are used to:
+
+Open browser
+
+Login once
+
+Create test data
+
+Close browser
+
+Clear data
+
+So you don’t repeat the same code again and again
+
+Main Hooks in Playwright
+1. beforeAll - Runs once before all tests
+
+test.beforeAll(async () => {
+  console.log("Runs once before all tests");
+});
+
+
+Use when - 
+
+   One-time setup
+
+   DB connection
+
+   Test data creation
+
+2. afterAll
+
+Runs once after all tests
+
+test.afterAll(async () => {
+  console.log("Runs once after all tests");
+});
+
+
+Use when:
+
+Cleanup
+
+Close connections
+
+3. beforeEach
+
+Runs before every test
+
+test.beforeEach(async ({ page }) => {
+  await page.goto("https://example.com");
+});
+
+4. afterEach
+
+Runs after every test
+
+test.afterEach(async ({ page }) => {
+  console.log("Test finished");
+});
+
+
+Use when:
+
+Logout
+
+Take screenshot on failure
+
+Cleanup per test
+
+Use when:
+
+Open website
+
+Login before each test
+
+Simple Flow:
+------------
+beforeAll - open url & verify login page
+  beforeEach - login
+    test 1 - Verify Product Page
+  afterEach - take screenshot
+  beforeEach
+    test 2 - Add to cart
+  afterEach
+afterAll
+
+
+Application/url opens.
+Login page is verified.
+User logs in before each test.
+Tests run.
+Screenshot is captured.
+Browser closes.
+
+
+
+
+beforeAll
+→ Open URL
+→ Verify Login Page
+
+beforeEach
+→ Login
+
+Test 1
+→ Verify Login Successful (Product Page)
+
+afterEach
+→ Take Screenshot
+
+Test 2
+→ Add To Cart
+
+afterEach
+→ Take Screenshot
+
+afterAll
+→ Close Browser
