@@ -1,0 +1,94 @@
+session-25 - Grouping of test
+-----------------------------
+
+Grouping is sa way to organize related test cases into one group so that they are easy to understand, maintain and execute.
+
+test cases of saucedemo website
+
+Login tests
+   ✓ Valid Login
+
+   ✓ Invalid Login
+
+   ✓ Locked User Login
+
+Product tests
+   ✓ Verify Product Page
+
+   ✓ Add Product
+
+   ✓ Remove Product
+
+Cart tests
+   ✓ Open Cart
+
+   ✓ Remove Product
+
+checkout tests
+   ✓ Complete Order
+
+   ✓ Cancel Order
+
+
+
+Functional Tests
+	test1, test2
+
+Regression Tests
+	test3, test4
+
+Smoke Tests
+
+Sanity Tests
+ etc...
+
+
+test.describe()
+
+
+
+
+Playwright Test File
+
+├── File Level beforeAll()          ← Runs once before all tests
+
+├── Login Group
+│      ├── Group beforeAll()        ← Runs once before Login group
+│      │
+│      ├── File beforeEach()
+│      ├── Group beforeEach()
+│      ├── Test1
+│      ├── Group afterEach()
+│      ├── File afterEach()
+│      │
+│      ├── File beforeEach()
+│      ├── Group beforeEach()
+│      ├── Test2
+│      ├── Group afterEach()
+│      ├── File afterEach()
+│      │
+│      └── Group afterAll()
+
+├── Product Group
+│      ├── Group beforeAll()
+│      │
+│      ├── File beforeEach()
+│      ├── Group beforeEach()
+│      ├── Test1
+│      ├── Group afterEach()
+│      ├── File afterEach()
+│      │
+│      └── Group afterAll()
+
+├── Checkout Group
+│      ├── Group beforeAll()
+│      │
+│      ├── File beforeEach()
+│      ├── Group beforeEach()
+│      ├── Test1
+│      ├── Group afterEach()
+│      ├── File afterEach()
+│      │
+│      └── Group afterAll()
+
+└── File Level afterAll()           ← Runs once after all tests
