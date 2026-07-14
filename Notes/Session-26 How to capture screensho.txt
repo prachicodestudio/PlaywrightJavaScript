@@ -1,0 +1,20 @@
+Session-26 How to capture screenshots
+-------------------------------------
+
+what is screenshot
+A screenshot is an image of the current state of the web page captured during test execution.
+
+Why do we need screenshot
+
+1. Evidence / proof of test execution
+2. Debugging failed tests
+3. Reporting
+4. Documentation
+
+How to capture screenshot
+page.screenshot()
+
+1. Visible Page Screenshot (Default)
+2. Full Page Screenshot
+3. Capture Screenshot of a Specific Element
+
