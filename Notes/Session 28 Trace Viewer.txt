@@ -1,0 +1,21 @@
+Trace Viewer
+------------
+
+Trace Viewer is a debugging tool that records every action performed during test execution and allows us to analyze the test step by step.
+
+Why do we need trace viewer
+
+1. Debug failed tests
+2. step by step execution
+3. screenshot + video + log
+4. Easy root cause analysis
+
+| Option                                       | Meaning                                                                | When Trace is Captured      |
+| -------------------------------------------- | ---------------------------------------------------------------------- | --------------------------- |
+| `off`                                        | Disables trace recording.                                              | Never                       |
+| `on`                                         | Records a trace for every test.                                        | Every test                  |
+| `on-first-retry`                             | Records a trace only when a failed test is retried for the first time. | First retry only            |
+| `on-all-retries`                             | Records a trace on every retry.                                        | Every retry                 |
+| `retain-on-failure`                          | Records every test, but keeps the trace only if the test fails.        | Saved only for failed tests |
+| `retain-on-first-failure` *(newer versions)* | Records only the first failed execution and keeps that trace.          | First failure only          |
+
