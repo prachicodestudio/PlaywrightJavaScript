@@ -17,7 +17,7 @@ test('Trace', async ({ page }) => {
    // await page.waitForTimeout(2000);
 
     //check for visibility of login button
-    await expect(page.locator('#login-button123')).toBeVisible();
+    await expect(page.locator('#login-button')).toBeVisible();
 
     //click on login button
     await page.locator('#login-button').click();
