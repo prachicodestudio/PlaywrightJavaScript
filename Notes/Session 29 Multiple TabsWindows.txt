@@ -1,0 +1,26 @@
+How to Handle Multiple Tabs/Windows
+
+Playwright, tabs and windows are handled using the same Page object. The only difference is how the new page is opened.
+
+When clicking a link that opens a new tab (target="_blank") or new Window, 
+	-	use context.waitForEvent('page').
+
+Browser
+    │
+    └── BrowserContext   ← page.context()
+             │
+             └── Page
+                  │
+                  └── https://the-internet.herokuapp.com/windows
+
+
+In case multiple tabs are open, each tab will have its own page object. to make specific tab active we have to use page object of that specific tab and call bringToFront() method.
+
+Browser
+│
+├── Parent Tab  → page        await page.bringToFront();
+│
+├── Child Tab 1 → childPage   await childPage.bringToFront();
+│
+└── Child Tab 2 → thirdPage     await thirdPage.bringToFront();
+
