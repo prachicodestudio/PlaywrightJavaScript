@@ -1,0 +1,55 @@
+Annotations
+------------
+What are Annotations?
+
+Annotations modify the behavior of test execution.
+They help control how Playwright runs a test.
+Common annotations include skip, only, fail, fixme, and slow
+
+1.  test.skip() skips the execution of a test.
+
+The skipped test is displayed as Skipped in the Playwright report.
+
+Use it when:
+
+Feature is under development.
+Test is temporarily not required.
+Environment is unavailable.
+
+2.  test.only() runs only the marked test.
+
+All other tests are ignored.
+
+Useful while debugging.
+
+3.  test.fail() tells Playwright that the test is expected to fail.
+
+If the test fails → Playwright considers it expected.
+
+If the test passes → Playwright marks it as an unexpected pass.
+
+
+4. test.fixme() marks a test as needing a fix.
+
+The test is skipped.
+
+Use it for:
+
+Known bugs.
+Incomplete features.
+Tests waiting for a fix.
+
+
+| skip()                  | fixme()                      |
+| ----------------------- | ---------------------------- |
+| Skip temporarily        | Skip because it needs fixing |
+| Test may be ready later | Feature or test is broken    |
+
+5. test.slow() triples the timeout of a test.
+
+Use it when:
+
+Uploading large files.
+Slow APIs.
+Slow environments.
+
