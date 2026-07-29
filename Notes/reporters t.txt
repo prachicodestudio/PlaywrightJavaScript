@@ -1,0 +1,101 @@
+A Reporter displays the result of test execution.
+
+It provides information such as:
+
+Passed tests
+Failed tests
+Skipped tests
+Execution time
+Error messages
+Test summary
+
+Some reporters also generate report files for later analysis.
+
+Types of Reporters
+------------------
+Playwright provides several built-in reporters.
+
+List Reporter
+Dot Reporter
+JSON Reporter
+JUnit Reporter
+HTML Reporter
+Line Reporter
+
+Each reporter presents test results in a different format.
+
+List Reporter
+--------------
+1. Default reporter in playwright
+2. shows each test execution
+3. Dispplay pass/fail status of the test
+4. Easy to read
+
+Dot reporter
+------------
+Prints one dot for each executed test.
+Very compact output.
+Best for large test suites.
+
+JSON Reporter
+-------------
+Generates report in JSON format.
+Machine-readable.
+Useful for dashboards and custom reporting.
+
+HTML Reporter
+-------------
+Generates an interactive HTML report.
+Includes test details.
+Shows screenshots, traces (if configured), and execution summary.
+
+Line Reporter
+--------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @ts-check
+import { test, expect } from '@playwright/test';
+test('SauceDemo Login', async({page})=>{
+   //open url
+  await page.goto("https://www.saucedemo.com/");
+  await page.fill('#user-name', 'standard_user');
+  await page.fill('#password', 'secret_sauce');
+  await page.click('#login-button');
+})
+
+test('Playwright has title', async ({ page }) => {
+  await page.goto('https://playwright.dev/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle("Fast and reliable end-to-end testing for modern web apps | Playwright");
+});
+
+test('Facebook has title', async ({ page }) => {
+  await page.goto('https://facebook.com/');
+
+  // Expect a title "to contain" a substring.
+  await expect(page).toHaveTitle("Facebook");
+});
+
+
