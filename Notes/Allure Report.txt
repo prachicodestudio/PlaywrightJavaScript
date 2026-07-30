@@ -1,0 +1,96 @@
+What is Allure Report?
+
+Allure Report is an advanced third-party reporting framework.
+
+It generates rich, interactive, and visually appealing test reports.
+
+Unlike the HTML Reporter, Allure provides additional features such as:
+
+Test history
+Categories
+Attachments
+Environment information
+Execution timeline
+Trend analysis
+
+Why use Allure?
+----------------
+Advantages
+
+Beautiful UI
+Interactive dashboard
+Test history
+Timeline view
+Categories
+Attach screenshots
+Attach videos
+CI/CD integration
+Easy debugging
+
+
+Step1. Install Allure playwright package
+	npm install -D allure-playwright
+	npm install -g allure-commandline
+
+
+step2: configure reporter in playwright.config.js
+reporter:[['line'],['allure-playwright']],
+
+now execute test
+Step3: npx playwright test testscript.spec.js
+
+this will create allure-results/ folder
+
+step4: generate report
+
+allure generate allure-results --clean
+
+step5: open generated report
+ allure open allure-report
+
+report is generated in /allure-report folder
+
+
+
+
+Important Notes for Linux and MacOs User
+
+Linux
+-----
+If Java is not installed:
+
+sudo apt update
+sudo apt install default-jre
+
+Install the Allure CLI:
+
+npm install -g allure-commandline
+
+or install using your package manager if available.
+
+Verify:
+
+allure --version
+
+MacOS
+--------
+Install Homebrew (if not already installed), then:
+
+brew install allure
+
+Verify the installation:
+
+allure --version
+
+
+
+
+
+
+
+
+
+
+
+
+

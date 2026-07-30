@@ -1,0 +1,39 @@
+What is the Page Object Model?
+
+The Page Object Model (POM) is a design pattern used in test automation.
+
+It separates:
+
+Page Locators
+Page Methods
+Test Scripts
+
+Instead of writing locators inside every test, we store them in separate page classes.
+
+This makes the automation framework:
+
+Reusable
+Maintainable
+Easy to understand
+Easy to update
+
+
+Problem Without POM 
+----------------------
+Without Page Object Model:
+
+Locators are duplicated in multiple test cases.
+Code becomes lengthy.
+Maintenance becomes difficult.
+Updating a locator requires changes in many files.
+Test scripts become difficult to read.
+
+Solution Using POM
+------------------
+With Page Object Model:
+
+Every web page has its own class.
+Locators are stored in one place.
+Reusable methods are created.
+Test scripts become short and clean.
+If a locator changes, update it only once.
