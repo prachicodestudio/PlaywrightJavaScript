@@ -1,0 +1,92 @@
+What is repeatEach?
+repeatEach is a Playwright configuration option that runs every test multiple times, even if the test passes.
+
+
+When to use repeatEach?
+
+Use repeatEach when you want to execute the same test multiple times, regardless of whether it passes or fails.
+
+Common use cases:
+
+Detect flaky tests
+Verify test stability
+Check intermittent issues
+Test under repeated execution
+Validate fixes for random failures
+
+
+What are Retries?
+
+Retries allow Playwright to automatically re-run a failed test before marking it as failed.
+
+Why use Retries?
+Handle temporary failures.
+Reduce false test failures.
+Improve test reliability.
+Identify flaky tests.
+Key Points
+Retries are executed only when a test fails.
+If a test passes on the first attempt, no retries are performed.
+Retries can be configured in the configuration file or from the command line.
+
+What is a Flaky Test?
+
+A flaky test is a test that sometimes passes and sometimes fails without any changes to the application or test code.
+
+Example
+First execution → Fail
+Retry → Pass
+
+Playwright marks such tests as Flaky.
+
+Common Causes
+Timing issues
+Network delays
+Synchronization problems
+Slow application response
+Dynamic web elements
+Unstable test environment
+Race conditions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Retries = runs test only after failure
+repeatEach = every time fixed number of execution
